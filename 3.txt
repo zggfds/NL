@@ -1,0 +1,17 @@
+if IY_LOADED and not _G.IY_DEBUG == true then
+	error(NK is already running!,0)
+	return
+end
+
+pcall(function() getgenv().IY_LOADED = true end)
+
+if not gameIsLoaded() then
+	local notLoaded = Instance.new(Message, gameGetService(CoreGui))
+	notLoaded.Text = 'NK is waiting for the game to load'
+	game.LoadedWait()
+	notLoadedDestroy()
+end
+
+ver = '5.7'
+
+Players = gameGetService(Players)
